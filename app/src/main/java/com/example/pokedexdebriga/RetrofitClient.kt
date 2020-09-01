@@ -13,7 +13,7 @@ class RetrofitClient private constructor(){
     companion object{
 
         private lateinit var retrofit: Retrofit
-        private val baseUrl = "http://jsonplaceholder.typicode.com/"
+        private val baseUrl = "https://pokeapi.co/api/v2/"
 
         private fun getRetrofitInstance(): Retrofit{
 

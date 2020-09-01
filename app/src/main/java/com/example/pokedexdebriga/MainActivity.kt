@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         idBotaoPesquisar.setOnClickListener {
             val intent = Intent(this,Home::class.java).apply{
-                putExtra("nomePokemon", idCampoPesquisar.tex)
+                putExtra("nome", idCampoPesquisar.text.toString())
             }
             startActivity(intent)
         }
