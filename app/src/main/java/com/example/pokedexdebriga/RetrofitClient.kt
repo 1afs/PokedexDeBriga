@@ -14,6 +14,7 @@ class RetrofitClient private constructor(){
 
         private lateinit var retrofit: Retrofit
         private val baseUrl = "https://pokeapi.co/api/v2/"
+       // private val cryUrl = "https://pokemoncries.com/cries/"
 
         private fun getRetrofitInstance(): Retrofit{
 
@@ -27,6 +28,7 @@ class RetrofitClient private constructor(){
             }
             return retrofit
         }
+
 
         fun <T> criarServico(classeServico : Class <T> ) : T{
             return getRetrofitInstance().create(classeServico)
