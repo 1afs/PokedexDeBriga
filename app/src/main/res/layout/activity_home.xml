@@ -7,6 +7,108 @@
     tools:context=".Home">
 
     <TextView
+        android:id="@+id/Resistencias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Fraquezas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idF4" />
+
+    <TextView
+        android:id="@+id/idR4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idR1"
+        tools:text="[TIPO]" />
+
+    <TextView
+        android:id="@+id/idR2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/idF3"
+        app:layout_constraintStart_toEndOf="@+id/idF1"
+        app:layout_constraintTop_toBottomOf="@+id/Resistencias"
+        tools:text="[TIPO]" />
+
+    <TextView
+        android:id="@+id/idR5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/idF3"
+        app:layout_constraintStart_toEndOf="@+id/idF1"
+        app:layout_constraintTop_toBottomOf="@+id/idR2"
+        tools:text="[TIPO]" />
+
+    <TextView
+        android:id="@+id/idR3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Resistencias"
+        tools:text="[TIPO]" />
+
+    <TextView
+        android:id="@+id/idR6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idR3"
+        tools:text="[TIPO]" />
+
+    <TextView
+        android:id="@+id/idR1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Resistencias"
+        tools:text="[TIPO]" />
+
+    <TextView
+        android:id="@+id/idF5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/idF3"
+        app:layout_constraintStart_toEndOf="@+id/idF1"
+        app:layout_constraintTop_toBottomOf="@+id/idF2"
+        tools:text="[TIPO]" />
+
+    <TextView
+        android:id="@+id/idF4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idF1"
+        tools:text="[TIPO]" />
+
+    <TextView
+        android:id="@+id/idF6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idF3"
+        tools:text="[TIPO]" />
+
+    <TextView
         android:id="@+id/idHomeNomePokemon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -109,9 +211,53 @@
         android:id="@+id/idHomeButtonCry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="CRY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idHomeImageViewPokemon"
+        app:layout_constraintVertical_bias="0.825" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="Fraquezas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idHomeImageViewPokemon" />
+
+    <TextView
+        android:id="@+id/idF1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:text="[TIPO]" />
+
+    <TextView
+        android:id="@+id/idF2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/idF3"
+        app:layout_constraintStart_toEndOf="@+id/idF1"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:text="[TIPO]" />
+
+    <TextView
+        android:id="@+id/idF3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:text="[TIPO]" />
 </androidx.constraintlayout.widget.ConstraintLayout>
