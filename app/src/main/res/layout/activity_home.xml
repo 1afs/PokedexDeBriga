@@ -6,107 +6,117 @@
     android:layout_height="match_parent"
     tools:context=".Home">
 
+    <ImageView
+        android:id="@+id/idR5"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/tamanhoTipos"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/idR6"
+        app:layout_constraintStart_toEndOf="@+id/idR4"
+        app:layout_constraintTop_toBottomOf="@+id/idR2"
+        app:srcCompat="@drawable/normal" />
+
+    <ImageView
+        android:id="@+id/idR1"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/tamanhoTipos"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Resistencias"
+        app:srcCompat="@drawable/normal" />
+
+    <ImageView
+        android:id="@+id/idR4"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/tamanhoTipos"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idR1"
+        app:srcCompat="@drawable/normal" />
+
+    <ImageView
+        android:id="@+id/idR2"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/tamanhoTipos"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/idR3"
+        app:layout_constraintStart_toEndOf="@+id/idR1"
+        app:layout_constraintTop_toBottomOf="@+id/Resistencias"
+        app:srcCompat="@drawable/normal" />
+
+    <ImageView
+        android:id="@+id/idR6"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/tamanhoTipos"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idR3"
+        app:srcCompat="@drawable/normal" />
+
+    <ImageView
+        android:id="@+id/idR3"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/tamanhoTipos"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Resistencias"
+        app:srcCompat="@drawable/normal" />
+
+    <ImageView
+        android:id="@+id/idF5"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/tamanhoTipos"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/idF6"
+        app:layout_constraintStart_toEndOf="@+id/idF4"
+        app:layout_constraintTop_toBottomOf="@+id/idF2"
+        app:srcCompat="@drawable/normal" />
+
+    <ImageView
+        android:id="@+id/idF4"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/tamanhoTipos"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idF1"
+        app:srcCompat="@drawable/normal" />
+
+    <ImageView
+        android:id="@+id/idF6"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/tamanhoTipos"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idF3"
+        app:srcCompat="@drawable/normal" />
+
     <TextView
         android:id="@+id/Resistencias"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:text="Fraquezas"
+        android:text="Resistencia"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idF4" />
-
-    <TextView
-        android:id="@+id/idR4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idR1"
-        tools:text="[TIPO]" />
-
-    <TextView
-        android:id="@+id/idR2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/idF3"
-        app:layout_constraintStart_toEndOf="@+id/idF1"
-        app:layout_constraintTop_toBottomOf="@+id/Resistencias"
-        tools:text="[TIPO]" />
-
-    <TextView
-        android:id="@+id/idR5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/idF3"
-        app:layout_constraintStart_toEndOf="@+id/idF1"
-        app:layout_constraintTop_toBottomOf="@+id/idR2"
-        tools:text="[TIPO]" />
-
-    <TextView
-        android:id="@+id/idR3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Resistencias"
-        tools:text="[TIPO]" />
-
-    <TextView
-        android:id="@+id/idR6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idR3"
-        tools:text="[TIPO]" />
-
-    <TextView
-        android:id="@+id/idR1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Resistencias"
-        tools:text="[TIPO]" />
-
-    <TextView
-        android:id="@+id/idF5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/idF3"
-        app:layout_constraintStart_toEndOf="@+id/idF1"
-        app:layout_constraintTop_toBottomOf="@+id/idF2"
-        tools:text="[TIPO]" />
-
-    <TextView
-        android:id="@+id/idF4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idF1"
-        tools:text="[TIPO]" />
-
-    <TextView
-        android:id="@+id/idF6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idF3"
-        tools:text="[TIPO]" />
 
     <TextView
         android:id="@+id/idHomeNomePokemon"
@@ -114,6 +124,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/idHomeImageViewPokemon"
@@ -121,50 +132,12 @@
         tools:text="[NomePokemon]" />
 
     <TextView
-        android:id="@+id/idHomeTipo1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/idHomeImageViewPokemon"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        tools:text="[TipoPokemon]" />
-
-    <TextView
-        android:id="@+id/idHomeIdPokemon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/idHomeImageViewPokemon"
-        app:layout_constraintTop_toBottomOf="@+id/idHomeTipo2"
-        app:layout_constraintVertical_bias="0.0"
-        tools:text="[ID POKEMON]" />
-
-    <TextView
-        android:id="@+id/idHomeTipo2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/idHomeImageViewPokemon"
-        app:layout_constraintTop_toBottomOf="@+id/idHomeTipo1"
-        tools:text="[TIPO2]" />
-
-    <TextView
         android:id="@+id/texto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Informações sobre o Pokemon"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -190,6 +163,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:text="Nome:"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/idHomeImageViewPokemon"
@@ -202,6 +176,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:text="Tipo:"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/idHomeImageViewPokemon"
@@ -226,38 +201,69 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:text="Fraquezas"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idHomeImageViewPokemon" />
 
-    <TextView
+    <ImageView
+        android:id="@+id/idHomeTipo1"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/tamanhoTipos"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toEndOf="@+id/idHomeImageViewPokemon"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:srcCompat="@drawable/normal" />
+
+    <ImageView
+        android:id="@+id/idHomeTipo2"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/tamanhoTipos"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toEndOf="@+id/idHomeImageViewPokemon"
+        app:layout_constraintTop_toBottomOf="@+id/idHomeTipo1"
+        app:srcCompat="@drawable/normal" />
+
+    <ImageView
         android:id="@+id/idF1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:layout_height="@dimen/tamanhoTipos"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:text="[TIPO]" />
+        app:srcCompat="@drawable/normal" />
 
-    <TextView
+    <ImageView
         android:id="@+id/idF2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/tamanhoTipos"
         android:layout_marginTop="8dp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/idF3"
         app:layout_constraintStart_toEndOf="@+id/idF1"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:text="[TIPO]" />
+        app:srcCompat="@drawable/normal" />
 
-    <TextView
+    <ImageView
         android:id="@+id/idF3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/tamanhoTipos"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginEnd="32dp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:text="[TIPO]" />
+        app:srcCompat="@drawable/normal" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

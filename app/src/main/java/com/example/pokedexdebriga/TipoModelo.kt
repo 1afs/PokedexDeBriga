@@ -17,6 +17,10 @@ class TipoModelo {
         @SerializedName("half_damage_from")
         var recebeMetade : List<Tipo>? = null
 
+        @SerializedName("no_damage_from")
+        var anula : List<Tipo>? = null
+
+
         class Tipo {
             @SerializedName("name")
             var name : String = ""

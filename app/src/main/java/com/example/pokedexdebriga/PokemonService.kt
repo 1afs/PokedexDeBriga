@@ -12,7 +12,7 @@ interface PokemonService {
         //Camada PostService que mapeia a URL (possiveis parametros)
         @GET
         //fun list(""parametro""): Call<""retorno"">
-        fun list(@Url url: String): Call<PokemonModelo>
+        suspend fun list(@Url url: String): PokemonModelo
 
 
 }

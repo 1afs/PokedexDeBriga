@@ -8,6 +8,8 @@ interface TipoService {
 
     @GET
 
-    fun lista(@Url url: String): Call<TipoModelo>
+   suspend fun lista(@Url url: String): TipoModelo
+
+
 
 }
