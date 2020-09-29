@@ -14,6 +14,7 @@ import android.provider.Settings
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.view.isVisible
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_home.*
@@ -23,7 +24,10 @@ import okhttp3.Dispatcher
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.IOException
+
 import java.net.URL
+import kotlin.Exception
 import kotlin.properties.Delegates
 
 class Home : AppCompatActivity() {
@@ -40,43 +44,48 @@ class Home : AppCompatActivity() {
 
         val conexao = RetrofitClient.criarServico(PokemonService::class.java)
         val tipo = RetrofitClient.criarServico(TipoService::class.java)
-
         val recebeIntent = intent.getStringExtra("nome")
 
-        CoroutineScope(Dispatchers.Main).launch {
-            val info = withContext(Dispatchers.IO){
-                conexao.list("pokemon/" + recebeIntent.toString().toLowerCase())
+            CoroutineScope(Dispatchers.Main).launch {
+                try{
+                val info = withContext(Dispatchers.IO){
+                    conexao.list("pokemon/" + recebeIntent.toString().toLowerCase())
+                }
+
+                Picasso.get().load(info.sprites?.other?.artwork?.arte.toString()).into(idHomeImageViewPokemon)
+                preencheDados(info)
+
+                //   Picasso.get().load("file:///android_asset/" + "water.png").into(imagetest)
+
+
+                if (info.tipos?.size!! > 1) {
+                    // idHomeTipo2.setText(info.tipos?.get(1)?.types?.name)
+
+                    puxaDados(tipo,0,info)
+                    puxaDados(tipo,1,info)
+
+                    var fraqueza  = fraquezas.minus(resistencias)
+                    var resistencia = resistencias.minus(fraquezas)
+
+                    preencheSlotFraqueza(fraqueza)
+                    preencheSlotResistencia(resistencia)
+
+                }else{
+                    puxaDados(tipo,0,info)
+                    preencheSlotFraqueza(fraquezas)
+                    preencheSlotResistencia(resistencias)
+                }
+
+                idHomeButtonCry.setOnClickListener {
+                    executarSom("https://pokemoncries.com/cries/" + info.id.toString() + ".mp3")
+                }
+
+            }catch (e : Exception){
+                    println(e.message)
+                    this@Home.finish()
+                }
             }
 
-            Picasso.get().load(info.sprites?.other?.artwork?.arte.toString()).into(idHomeImageViewPokemon)
-            preencheDados(info)
-
-         //   Picasso.get().load("file:///android_asset/" + "water.png").into(imagetest)
-
-
-            if (info.tipos?.size!! > 1) {
-               // idHomeTipo2.setText(info.tipos?.get(1)?.types?.name)
-
-                puxaDados(tipo,0,info)
-                puxaDados(tipo,1,info)
-
-                var fraqueza  = fraquezas.minus(resistencias)
-                var resistencia = resistencias.minus(fraquezas)
-
-                preencheSlotFraqueza(fraqueza)
-                preencheSlotResistencia(resistencia)
-
-            }else{
-                puxaDados(tipo,0,info)
-                preencheSlotFraqueza(fraquezas)
-                preencheSlotResistencia(resistencias)
-            }
-
-            idHomeButtonCry.setOnClickListener {
-                executarSom("https://pokemoncries.com/cries/" + info.id.toString() + ".mp3")
-            }
-
-        }
 
     }
 
@@ -215,7 +224,7 @@ class Home : AppCompatActivity() {
                     .build()
             )
             setDataSource(link)
-            prepare() // might take long! (for buffering, etc)
+            prepare()
             start()
         }
     }

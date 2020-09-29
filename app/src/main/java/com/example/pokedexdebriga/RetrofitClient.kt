@@ -19,6 +19,7 @@ class RetrofitClient private constructor(){
         private fun getRetrofitInstance(): Retrofit{
 
             val httpClient = OkHttpClient.Builder()
+
             if(!::retrofit.isInitialized){
                 retrofit = Retrofit.Builder()
                     .baseUrl(baseUrl)
