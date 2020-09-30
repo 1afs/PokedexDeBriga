@@ -53,7 +53,8 @@ class Home : AppCompatActivity() {
                 }
 
                 Picasso.get().load(info.sprites?.other?.artwork?.arte.toString()).into(idHomeImageViewPokemon)
-                preencheDados(info)
+                    val som = executarSom("https://pokemoncries.com/cries/" + info.id.toString() + ".mp3")
+                    preencheDados(info)
 
                 //   Picasso.get().load("file:///android_asset/" + "water.png").into(imagetest)
 
@@ -77,7 +78,7 @@ class Home : AppCompatActivity() {
                 }
 
                 idHomeButtonCry.setOnClickListener {
-                    executarSom("https://pokemoncries.com/cries/" + info.id.toString() + ".mp3")
+                    play(som)
                 }
 
             }catch (e : Exception){
@@ -162,8 +163,6 @@ class Home : AppCompatActivity() {
 
     fun preencheSlotFraqueza(info : Set<Any>){
 
-
-
             info.forEach{any ->
                 if (!idF1.isVisible) {
                     Picasso.get().load("file:///android_asset/$any.png").into(idF1)
@@ -214,7 +213,13 @@ class Home : AppCompatActivity() {
 
     }
 
-    fun executarSom(link : String){
+    fun play(media : MediaPlayer){
+        media.apply {
+            start()
+        }
+    }
+
+    fun executarSom(link : String) : MediaPlayer{
 
         val mediaPlayer: MediaPlayer? = MediaPlayer().apply {
             setAudioAttributes(
@@ -225,7 +230,10 @@ class Home : AppCompatActivity() {
             )
             setDataSource(link)
             prepare()
-            start()
+         //  start()
         }
+        return mediaPlayer!!
     }
+
+
 }
