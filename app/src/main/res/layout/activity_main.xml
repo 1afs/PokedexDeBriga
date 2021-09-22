@@ -28,6 +28,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idCampoPesquisar" />
 
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:hint="Nome do Pokemon"
+        app:layout_constraintBottom_toTopOf="@+id/idBotaoPesquisar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <EditText
         android:id="@+id/idCampoPesquisar"
         android:layout_width="wrap_content"
@@ -40,15 +58,15 @@
         app:layout_constraintTop_toBottomOf="@+id/idInicio" />
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/idInicio"
-        app:layout_constraintBottom_toTopOf="@id/textView"
-        app:srcCompat="@drawable/ic_pokemon"
-        />
+        app:srcCompat="@drawable/ic_pokemon" />
 
     <TextView
         android:id="@+id/textView"
