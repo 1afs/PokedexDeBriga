@@ -32,13 +32,10 @@ import kotlin.properties.Delegates
 
 class Home : AppCompatActivity() {
 
-
     var fraquezas: MutableSet<Any> = mutableSetOf()
     var resistencias: MutableSet<Any> = mutableSetOf()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
@@ -60,13 +57,10 @@ class Home : AppCompatActivity() {
                 val som =
                     executarSom("https://pokemoncries.com/cries/" + info.id.toString() + ".mp3")
                 preencheDados(info)
-
                 //   Picasso.get().load("file:///android_asset/" + "water.png").into(imagetest)
-
 
                 if (info.tipos?.size!! > 1) {
                     // idHomeTipo2.setText(info.tipos?.get(1)?.types?.name)
-
                     puxaDados(tipo, 0, info)
                     puxaDados(tipo, 1, info)
 
@@ -81,20 +75,15 @@ class Home : AppCompatActivity() {
                     preencheSlotFraqueza(fraquezas)
                     preencheSlotResistencia(resistencias)
                 }
-
                 idHomeButtonCry.setOnClickListener {
                     play(som)
                 }
-
             } catch (e: Exception) {
                 println(e.message)
                 this@Home.finish()
             }
         }
-
-
     }
-
 
     suspend fun puxaDados(tipo: TipoService, index: Int, info: PokemonModelo) {
 
@@ -118,7 +107,6 @@ class Home : AppCompatActivity() {
         }
 
         // Parei de implementar a resistencia... continuar
-
     }
 
     /*
@@ -150,7 +138,6 @@ class Home : AppCompatActivity() {
 
      */
     fun preencheDados(info: PokemonModelo) {
-
         idHomeNomePokemon.setText(info.nome.toUpperCase())
         Picasso.get().load("file:///android_asset/" + info.tipos?.get(0)?.types?.name + ".png")
             .into(idHomeTipo1)
@@ -163,11 +150,9 @@ class Home : AppCompatActivity() {
             Picasso.get().load("file:///android_asset/" + info.tipos?.get(1)?.types?.name + ".png")
                 .into(idHomeTipo2)
             idHomeTipo2.visibility = View.VISIBLE
-
         }
         //  idHomeIdPokemon.setText(info.id.toString())
         //  idHomeTipo1.setText(info.tipos?.get(0)?.types?.name)
-
     }
 
     fun preencheSlotFraqueza(info: Set<Any>) {
@@ -193,7 +178,6 @@ class Home : AppCompatActivity() {
                 idF6.visibility = View.VISIBLE
             }
         }
-
     }
 
     fun preencheSlotResistencia(info: Set<Any>) {
@@ -229,7 +213,6 @@ class Home : AppCompatActivity() {
     }
 
     fun executarSom(link: String): MediaPlayer {
-
         val mediaPlayer: MediaPlayer? = MediaPlayer().apply {
             setAudioAttributes(
                 AudioAttributes.Builder()
@@ -239,10 +222,7 @@ class Home : AppCompatActivity() {
             )
             setDataSource(link)
             prepare()
-            //  start()
         }
         return mediaPlayer!!
     }
-
-
 }

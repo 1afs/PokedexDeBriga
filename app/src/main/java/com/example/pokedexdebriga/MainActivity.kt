@@ -14,13 +14,10 @@ class MainActivity : AppCompatActivity() {
         val editText = R.id.idCampoPesquisar
 
         idBotaoPesquisar.setOnClickListener {
-            val intent = Intent(this,Home::class.java).apply{
+            val intent = Intent(this, Home::class.java).apply {
                 putExtra("nome", idCampoPesquisar.text.toString())
             }
             startActivity(intent)
         }
-
-
-
     }
 }
