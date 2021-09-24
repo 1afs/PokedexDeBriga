@@ -1,16 +1,9 @@
 package com.example.pokedexdebriga
 
-import android.content.Intent
-import android.content.res.AssetManager
 import android.media.AudioAttributes
-import android.media.AudioManager
 import android.media.MediaPlayer
-import android.net.Uri
-import android.net.rtp.AudioStream
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
-import android.provider.Settings
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -64,8 +57,8 @@ class Home : AppCompatActivity() {
                     puxaDados(tipo, 0, info)
                     puxaDados(tipo, 1, info)
 
-                    var fraqueza = fraquezas.minus(resistencias)
-                    var resistencia = resistencias.minus(fraquezas)
+                    val fraqueza = fraquezas.minus(resistencias)
+                    val resistencia = resistencias.minus(fraquezas)
 
                     preencheSlotFraqueza(fraqueza)
                     preencheSlotResistencia(resistencia)
@@ -155,7 +148,7 @@ class Home : AppCompatActivity() {
         //  idHomeTipo1.setText(info.tipos?.get(0)?.types?.name)
     }
 
-    fun preencheSlotFraqueza(info: Set<Any>) {
+    private fun preencheSlotFraqueza(info: Set<Any>) {
 
         info.forEach { any ->
             if (!idF1.isVisible) {
@@ -180,7 +173,7 @@ class Home : AppCompatActivity() {
         }
     }
 
-    fun preencheSlotResistencia(info: Set<Any>) {
+    private fun preencheSlotResistencia(info: Set<Any>) {
 
         info.forEach { any ->
             if (!idR1.isVisible) {
@@ -206,13 +199,13 @@ class Home : AppCompatActivity() {
 
     }
 
-    fun play(media: MediaPlayer) {
+    private fun play(media: MediaPlayer) {
         media.apply {
             start()
         }
     }
 
-    fun executarSom(link: String): MediaPlayer {
+    private fun executarSom(link: String): MediaPlayer {
         val mediaPlayer: MediaPlayer? = MediaPlayer().apply {
             setAudioAttributes(
                 AudioAttributes.Builder()
