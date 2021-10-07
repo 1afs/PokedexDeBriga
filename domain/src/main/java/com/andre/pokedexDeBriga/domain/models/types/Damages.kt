@@ -1,4 +1,4 @@
-package com.pokedexDeBriga.domain.models.types
+package com.andre.pokedexDeBriga.domain.models.types
 
 data class Damages(
     val recebeEmDobro: List<String>? = null,

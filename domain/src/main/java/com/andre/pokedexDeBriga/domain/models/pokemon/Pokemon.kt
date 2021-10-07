@@ -1,7 +1,7 @@
-package com.pokedexDeBriga.domain.models.pokemon
+package com.andre.pokedexDeBriga.domain.models.pokemon
 
-import com.pokedexDeBriga.domain.models.artwork.Sprite
-import com.pokedexDeBriga.domain.models.types.Type
+import com.andre.pokedexDeBriga.domain.models.artwork.Sprite
+import com.andre.pokedexDeBriga.domain.models.types.Type
 
 data class Pokemon (
     val nome: String = "",

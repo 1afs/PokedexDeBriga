@@ -1,10 +1,7 @@
-package com.example.pokedexdebriga
+package com.andre.pokedexdebriga
 
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Url
-import java.net.URL
-import retrofit2.http.Path as Path
 
 interface PokemonService {
     //Camada PostService que mapeia a URL (possiveis parametros)

@@ -1,27 +1,17 @@
-package com.example.pokedexdebriga
+package com.andre.pokedexdebriga
 
 import android.media.AudioAttributes
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.core.view.isVisible
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
-import okhttp3.Dispatcher
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.io.IOException
 
-import java.net.URL
 import kotlin.Exception
-import kotlin.properties.Delegates
 
 class Home : AppCompatActivity() {
 

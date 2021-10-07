@@ -10,5 +10,6 @@ java {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation("io.reactivex.rxjava3:rxkotlin:3.0.0")
+    implementation "io.reactivex.rxjava3:rxkotlin:3.0.0"
+
 }

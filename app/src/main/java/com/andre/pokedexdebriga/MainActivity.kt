@@ -1,9 +1,8 @@
-package com.example.pokedexdebriga
+package com.andre.pokedexdebriga
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +16,17 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, Home::class.java).apply {
                 putExtra("nome", idCampoPesquisar.text.toString())
             }
-            startActivity(intent)
+            //startActivity(intent)
+            executaTeste()
         }
+
+
+
+    }
+
+    fun executaTeste(){
+        val conexao = RetrofitClient.criarServico(PokemonService::class.java)
+        val tipo = RetrofitClient.criarServico(TipoService::class.java)
+        val recebeIntent = intent.getStringExtra("nome")
     }
 }

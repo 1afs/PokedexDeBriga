@@ -1,4 +1,4 @@
-package com.pokedexDeBriga.domain.models.artwork
+package com.andre.pokedexDeBriga.domain.models.artwork
 
 data class Sprite(val arte: String = "")
 
