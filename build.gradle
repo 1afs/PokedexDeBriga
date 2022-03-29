@@ -1,6 +1,22 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext.kotlin_version = "1.4.0"
+
+    ext{
+    versions = [
+            'kotlin'      : '1.4.0',
+            'detekt'      : '1.9.0',
+            'gradlePlugin': '3.6.1',
+            'appCompat'   : '1.0.2',
+            'ktlint'      : '0.36.0'
+    ]
+    libraries = [
+            'detekt'   : "io.gitlab.arturbosch.detekt:detekt-cli:${versions.detekt}",
+            'kotlin'   : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}",
+            'appCompat': "androidx.appcompat:appcompat:${versions.appCompat}",
+            'ktlint'   : "com.pinterest:ktlint:${versions.ktlint}"
+    ]
+    }
     repositories {
         google()
         jcenter()
