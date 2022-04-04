@@ -3,24 +3,21 @@ package com.example.pokedexdebriga
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
-
 // Camada RetrofitClient
 
-//Singleton
-class RetrofitClient private constructor(){
+// Singleton
+class RetrofitClient private constructor() {
 
-    companion object{
-
+    companion object {
         private lateinit var retrofit: Retrofit
         private val baseUrl = "https://pokeapi.co/api/v2/"
-       // private val cryUrl = "https://pokemoncries.com/cries/"
+        // private val cryUrl = "https://pokemoncries.com/cries/"
 
-        private fun getRetrofitInstance(): Retrofit{
-
+        private fun getRetrofitInstance(): Retrofit {
             val httpClient = OkHttpClient.Builder()
 
-            if(!::retrofit.isInitialized){
+            if (!::retrofit.isInitialized)
+            {
                 retrofit = Retrofit.Builder()
                     .baseUrl(baseUrl)
                     .client(httpClient.build())
@@ -30,11 +27,8 @@ class RetrofitClient private constructor(){
             return retrofit
         }
 
-
-        fun <T> criarServico(classeServico : Class <T> ) : T{
+        fun <T> criarServico(classeServico: Class<T>): T {
             return getRetrofitInstance().create(classeServico)
         }
-
     }
-
 }

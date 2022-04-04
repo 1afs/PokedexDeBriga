@@ -1,9 +1,8 @@
 package com.example.pokedexdebriga
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,13 +13,10 @@ class MainActivity : AppCompatActivity() {
         val editText = R.id.idCampoPesquisar
 
         idBotaoPesquisar.setOnClickListener {
-            val intent = Intent(this,Home::class.java).apply{
+            val intent = Intent(this, Home::class.java).apply {
                 putExtra("nome", idCampoPesquisar.text.toString())
             }
             startActivity(intent)
         }
-
-
-
     }
 }
