@@ -1,41 +1,38 @@
 package com.example.pokedexdebriga
 
-import android.content.Intent
-import android.content.res.AssetManager
 import android.media.AudioAttributes
-import android.media.AudioManager
 import android.media.MediaPlayer
-import android.net.Uri
-import android.net.rtp.AudioStream
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
-import android.provider.Settings
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.*
-import okhttp3.Dispatcher
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.io.IOException
-
-import java.net.URL
 import kotlin.Exception
-import kotlin.properties.Delegates
+import kotlinx.android.synthetic.main.activity_home.idF1
+import kotlinx.android.synthetic.main.activity_home.idF2
+import kotlinx.android.synthetic.main.activity_home.idF3
+import kotlinx.android.synthetic.main.activity_home.idF4
+import kotlinx.android.synthetic.main.activity_home.idF5
+import kotlinx.android.synthetic.main.activity_home.idF6
+import kotlinx.android.synthetic.main.activity_home.idHomeButtonCry
+import kotlinx.android.synthetic.main.activity_home.idHomeImageViewPokemon
+import kotlinx.android.synthetic.main.activity_home.idHomeNomePokemon
+import kotlinx.android.synthetic.main.activity_home.idHomeTipo1
+import kotlinx.android.synthetic.main.activity_home.idHomeTipo2
+import kotlinx.android.synthetic.main.activity_home.idR1
+import kotlinx.android.synthetic.main.activity_home.idR2
+import kotlinx.android.synthetic.main.activity_home.idR3
+import kotlinx.android.synthetic.main.activity_home.idR4
+import kotlinx.android.synthetic.main.activity_home.idR5
+import kotlinx.android.synthetic.main.activity_home.idR6
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class Home : AppCompatActivity() {
-
-
-    var fraquezas : MutableSet<Any> = mutableSetOf()
-    var resistencias : MutableSet<Any> = mutableSetOf()
-
+    var fraquezas: MutableSet<Any> = mutableSetOf()
+    var resistencias: MutableSet<Any> = mutableSetOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -46,33 +43,31 @@ class Home : AppCompatActivity() {
         val tipo = RetrofitClient.criarServico(TipoService::class.java)
         val recebeIntent = intent.getStringExtra("nome")
 
-            CoroutineScope(Dispatchers.Main).launch {
-                try{
-                val info = withContext(Dispatchers.IO){
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                val info = withContext(Dispatchers.IO) {
                     conexao.list("pokemon/" + recebeIntent.toString().toLowerCase())
                 }
 
-                Picasso.get().load(info.sprites?.other?.artwork?.arte.toString()).into(idHomeImageViewPokemon)
-                    val som = executarSom("https://pokemoncries.com/cries/" + info.id.toString() + ".mp3")
-                    preencheDados(info)
+                Picasso.get().load(info.sprites?.other?.artwork?.arte.toString())
+                    .into(idHomeImageViewPokemon)
+                val som =
+                    executarSom("https://pokemoncries.com/cries/" + info.id.toString() + ".mp3")
+                preencheDados(info)
 
                 //   Picasso.get().load("file:///android_asset/" + "water.png").into(imagetest)
-
-
                 if (info.tipos?.size!! > 1) {
                     // idHomeTipo2.setText(info.tipos?.get(1)?.types?.name)
+                    puxaDados(tipo, 0, info)
+                    puxaDados(tipo, 1, info)
 
-                    puxaDados(tipo,0,info)
-                    puxaDados(tipo,1,info)
-
-                    var fraqueza  = fraquezas.minus(resistencias)
+                    var fraqueza = fraquezas.minus(resistencias)
                     var resistencia = resistencias.minus(fraquezas)
 
                     preencheSlotFraqueza(fraqueza)
                     preencheSlotResistencia(resistencia)
-
-                }else{
-                    puxaDados(tipo,0,info)
+                } else {
+                    puxaDados(tipo, 0, info)
                     preencheSlotFraqueza(fraquezas)
                     preencheSlotResistencia(resistencias)
                 }
@@ -80,42 +75,34 @@ class Home : AppCompatActivity() {
                 idHomeButtonCry.setOnClickListener {
                     play(som)
                 }
-
-            }catch (e : Exception){
-                    println(e.message)
-                    this@Home.finish()
-                }
+            } catch (e: Exception) {
+                println(e.message)
+                this@Home.finish()
             }
-
-
+        }
     }
 
-
-
-    suspend fun puxaDados(tipo : TipoService, index : Int, info : PokemonModelo){
-
-        val infoTipo = withContext(Dispatchers.IO){
+    suspend fun puxaDados(tipo: TipoService, index: Int, info: PokemonModelo) {
+        val infoTipo = withContext(Dispatchers.IO) {
             tipo.lista("type/" + info.tipos?.get(index)?.types?.name)
         }
 
-        infoTipo.relacaoDanos?.recebeEmDobro?.forEach{tipo ->
-            //lista.add(tipo.name)
+        infoTipo.relacaoDanos?.recebeEmDobro?.forEach { tipo ->
+            // lista.add(tipo.name)
             fraquezas.add(tipo.name)
         }
 
-        infoTipo.relacaoDanos?.recebeMetade?.forEach{tipo ->
+        infoTipo.relacaoDanos?.recebeMetade?.forEach { tipo ->
             resistencias.add(tipo.name)
         }
 
-        if (infoTipo.relacaoDanos?.anula != null){
-            infoTipo.relacaoDanos?.anula?.forEach {tipo ->
+        if (infoTipo.relacaoDanos?.anula != null) {
+            infoTipo.relacaoDanos?.anula?.forEach { tipo ->
                 resistencias.add(tipo.name)
             }
         }
-
         // Parei de implementar a resistencia... continuar
-
-     }
+    }
 
     /*
     fun chamadoAPI(conecta : TipoService, url : String) : MutableList<TipoModelo.Damages>{
@@ -145,51 +132,48 @@ class Home : AppCompatActivity() {
 
 
      */
-    fun preencheDados(info : PokemonModelo){
+    fun preencheDados(info: PokemonModelo) {
 
         idHomeNomePokemon.setText(info.nome.toUpperCase())
-        Picasso.get().load("file:///android_asset/" + info.tipos?.get(0)?.types?.name + ".png").into(idHomeTipo1)
+        Picasso.get().load("file:///android_asset/" + info.tipos?.get(0)?.types?.name + ".png")
+            .into(idHomeTipo1)
         idHomeTipo1.visibility = View.VISIBLE
 
         if (info.tipos?.size!! > 1) {
-            Picasso.get().load("file:///android_asset/" + info.tipos?.get(1)?.types?.name + ".png").into(idHomeTipo2)
+            Picasso.get().load("file:///android_asset/" + info.tipos?.get(1)?.types?.name + ".png")
+                .into(idHomeTipo2)
             idHomeTipo2.visibility = View.VISIBLE
-
         }
-      //  idHomeIdPokemon.setText(info.id.toString())
-      //  idHomeTipo1.setText(info.tipos?.get(0)?.types?.name)
-
+        //  idHomeIdPokemon.setText(info.id.toString())
+        //  idHomeTipo1.setText(info.tipos?.get(0)?.types?.name)
     }
 
-    fun preencheSlotFraqueza(info : Set<Any>){
-
-            info.forEach{any ->
-                if (!idF1.isVisible) {
-                    Picasso.get().load("file:///android_asset/$any.png").into(idF1)
-                    idF1.visibility = View.VISIBLE
-                } else if (!idF2.isVisible) {
-                    Picasso.get().load("file:///android_asset/$any.png").into(idF2)
-                    idF2.visibility = View.VISIBLE
-                } else if (!idF3.isVisible) {
-                    Picasso.get().load("file:///android_asset/$any.png").into(idF3)
-                    idF3.visibility = View.VISIBLE
-                } else if (!idF4.isVisible) {
-                    Picasso.get().load("file:///android_asset/$any.png").into(idF4)
-                    idF4.visibility = View.VISIBLE
-                } else if (!idF5.isVisible) {
-                    Picasso.get().load("file:///android_asset/$any.png").into(idF5)
-                    idF5.visibility = View.VISIBLE
-                } else if (!idF6.isVisible) {
-                    Picasso.get().load("file:///android_asset/$any.png").into(idF6)
-                    idF6.visibility = View.VISIBLE
-                }
+    fun preencheSlotFraqueza(info: Set<Any>) {
+        info.forEach { any ->
+            if (!idF1.isVisible) {
+                Picasso.get().load("file:///android_asset/$any.png").into(idF1)
+                idF1.visibility = View.VISIBLE
+            } else if (!idF2.isVisible) {
+                Picasso.get().load("file:///android_asset/$any.png").into(idF2)
+                idF2.visibility = View.VISIBLE
+            } else if (!idF3.isVisible) {
+                Picasso.get().load("file:///android_asset/$any.png").into(idF3)
+                idF3.visibility = View.VISIBLE
+            } else if (!idF4.isVisible) {
+                Picasso.get().load("file:///android_asset/$any.png").into(idF4)
+                idF4.visibility = View.VISIBLE
+            } else if (!idF5.isVisible) {
+                Picasso.get().load("file:///android_asset/$any.png").into(idF5)
+                idF5.visibility = View.VISIBLE
+            } else if (!idF6.isVisible) {
+                Picasso.get().load("file:///android_asset/$any.png").into(idF6)
+                idF6.visibility = View.VISIBLE
             }
-
+        }
     }
 
-    fun preencheSlotResistencia(info : Set<Any>){
-
-        info.forEach{any ->
+    fun preencheSlotResistencia(info: Set<Any>) {
+        info.forEach { any ->
             if (!idR1.isVisible) {
                 Picasso.get().load("file:///android_asset/$any.png").into(idR1)
                 idR1.visibility = View.VISIBLE
@@ -210,17 +194,15 @@ class Home : AppCompatActivity() {
                 idR6.visibility = View.VISIBLE
             }
         }
-
     }
 
-    fun play(media : MediaPlayer){
+    fun play(media: MediaPlayer) {
         media.apply {
             start()
         }
     }
 
-    fun executarSom(link : String) : MediaPlayer{
-
+    fun executarSom(link: String): MediaPlayer {
         val mediaPlayer: MediaPlayer? = MediaPlayer().apply {
             setAudioAttributes(
                 AudioAttributes.Builder()
@@ -230,10 +212,8 @@ class Home : AppCompatActivity() {
             )
             setDataSource(link)
             prepare()
-         //  start()
+            //  start()
         }
         return mediaPlayer!!
     }
-
-
 }
